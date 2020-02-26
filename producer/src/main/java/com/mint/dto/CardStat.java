@@ -15,6 +15,6 @@ public class CardStat {
     private boolean success;
     private int start;
     private int limit;
-    private int size;
-    private Map<String, Integer> payload = new HashMap<>();
+    private long size;
+    private Map<String, Long> payload = new HashMap<>();
 }
