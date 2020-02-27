@@ -12,7 +12,7 @@ import java.util.Map;
 @Getter
 @Setter
 public class CardStat {
-    private boolean success;
+    private boolean success = true;
     private int start;
     private int limit;
     private long size;
