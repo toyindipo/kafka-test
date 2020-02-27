@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: cardconsumer
+    profiles:
+      active:
+        default
+  cloud:
+    stream:
+      bindings:
+        inboundCardData:
+          destination:  com.ng.vela.even.card_verified
+          content-type: application/json
+          group: cardGroup
+      kafka:
+        binder:
+          brokers: localhost
+      default:
+        producer:
+          headerMode: none
+          properties:
+            spring:
+              json:
+                add:
+                  type:
+                    headers: false
+        consumer:
+          headerMode: none
+
+  kafka:
+      consumer:
+        auto-offset-reset: earliest
+        enable-auto-commit: false
+        value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+logging:
+  level:
+    org.springframework.web: WARN
+    com.mint: DEBUG
+server:
+  port: 8083
+
+
+

@@ -12,6 +12,7 @@
 	<artifactId>card-check</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>card-check</name>
+	<packaging>pom</packaging>
 	<description>Demo project for Card Validation with Spring Boot</description>
 
 	<properties>
@@ -46,6 +47,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
+
+	<modules>
+		<module>consumer</module>
+		<module>producer</module>
+	</modules>
 
 	<build>
 		<plugins>
