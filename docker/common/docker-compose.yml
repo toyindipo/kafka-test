@@ -18,6 +18,7 @@ services:
       KAFKASERVER_URI: "kafkaserver"
       ZKSERVER_URI: "kafkaserver"
       KAFKASERVER_PORT:    "9092"
+      KAFKA_BOOTSTRAP_SERVER: "kafkaserver:9092"
 
   cardconsumer:
     image:  toyin/cardconsumer:mint
@@ -29,6 +30,7 @@ services:
       KAFKASERVER_URI: "kafkaserver"
       ZKSERVER_URI: "kafkaserver"
       KAFKASERVER_PORT:    "9092"
+      KAFKA_BOOTSTRAP_SERVER: "kafkaserver:9092"
 
   zookeeper:
     image: 'bitnami/zookeeper:latest'

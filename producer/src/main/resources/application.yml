@@ -4,23 +4,6 @@ spring:
     profiles:
       active:
         default
-  cloud:
-    stream:
-      bindings:
-        output:
-          destination:  com.ng.vela.even.card_verified
-          content-type: application/json
-      kafka:
-        binder:
-          brokers: localhost
-      producer:
-        headerMode: none
-        properties:
-          spring:
-            json:
-              add:
-                type:
-                  headers: false
 
   jpa:
     database: SQL_SERVER
@@ -35,13 +18,7 @@ spring:
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       initialization-mode: always
       testOnBorrow: true
-  kafka:
-    consumer:
-      auto-offset-reset: earliest
-      enable-auto-commit: false
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-    producer:
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 server:
   port: 8082
 
@@ -50,3 +27,6 @@ logging:
   level:
     org.springframework.web: WARN
     com.mint: DEBUG
+
+tpd:
+  topic-name: com.ng.vela.even.card_verified

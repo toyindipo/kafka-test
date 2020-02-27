@@ -97,6 +97,7 @@ public class CardServiceImpl implements CardService {
                 while (current <= cardLogs.size() && current < (start + limit)) {
                     CardLog cardLog = cardLogs.get(current - 1);
                     payload.put(cardLog.getCardDigit(), cardLog.getCount());
+                    ++current;
                 }
             }
             cardStat.setPayload(payload);

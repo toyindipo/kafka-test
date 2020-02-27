@@ -5,9 +5,9 @@ import com.mint.producer.service.MessageSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.messaging.support.MessageBuilder;
 
 
 /**
@@ -15,18 +15,23 @@ import org.springframework.messaging.support.MessageBuilder;
  */
 @Service
 public class MessageSourceImpl implements MessageSource {
-    private Source source;
     private static final Logger logger =
             LoggerFactory.getLogger(MessageSourceImpl.class);
+    private final KafkaTemplate<String, Object> template;
+    private final String topicName;
 
     @Autowired
-    public MessageSourceImpl(Source source) {
-        this.source = source;
+    public MessageSourceImpl(
+            final KafkaTemplate<String, Object> template,
+            @Value("${tpd.topic-name}") final String topicName) {
+        this.template = template;
+        this.topicName = topicName;
     }
 
     @Override
     public void publishCardData(CardData cardData) {
         logger.debug("Publishing " + cardData);
-        source.output().send(MessageBuilder.withPayload(cardData).build());
+        this.template.send(topicName,
+                cardData);
     }
 }

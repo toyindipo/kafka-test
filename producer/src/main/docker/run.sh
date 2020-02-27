@@ -18,4 +18,5 @@ java -Djava.security.egd=file:/dev/./urandom -Dserver.port=$SERVER_PORT   \
      -Dspring.profiles.active=$PROFILE                                   \
      -Dspring.cloud.stream.kafka.binder.zkNodes=$KAFKASERVER_URI          \
      -Dspring.cloud.stream.kafka.binder.brokers=$ZKSERVER_URI             \
+     -Dspring.kafka.bootstrap-servers=$KAFKA_BOOTSTRAP_SERVER          \
      -jar /usr/local/cardproducer/@project.build.finalName@.jar
